@@ -3,12 +3,25 @@
 <head>
 <title>Activation Functions</title>
 <meta charset="utf-8" />
+<style>
+.combined {
+  width: 1024px;
+  height: 768px;
+  display: block;
+  margin: auto;
+}
+
+.individual {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+</style>
 </head>
 <script src="https://unpkg.com/d3@3/d3.min.js"></script>
 <script src="https://unpkg.com/function-plot@1/dist/function-plot.js"></script>
 <script src="activation-functions.js"></script>
-<body onload='drawActivationFunctions()'>
-<div id="root" style="width: 1024px; height: 768px; display: block; margin: auto;">
-</div>
+<body onload="drawActivationFunctions()">
+<div class="combined" id="root"></div>
 </body>
 </html>
