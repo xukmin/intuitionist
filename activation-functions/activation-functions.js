@@ -1,11 +1,17 @@
 'use strict';
 
-function drawActivationFunctions() {
-  functionPlot.globals.COLORS = [...functionPlot.globals.COLORS, ...functionPlot.globals.COLORS, ...functionPlot.globals.COLORS, ...functionPlot.globals.COLORS];
-  const widthIndividual = 480;
-  const heightIndividual = 240;
+const widthCombined = 640;
+const heightCombined = 480;
+const widthIndividual = 480;
+const heightIndividual = 240;
 
-  const target = document.getElementById('root');
+function drawActivationFunctions() {
+  functionPlot.globals.COLORS = [
+    ...functionPlot.globals.COLORS,
+    ...functionPlot.globals.COLORS,
+    ...functionPlot.globals.COLORS,
+    ...functionPlot.globals.COLORS,
+  ];
 
   const identity = {
     title: 'Identity',
@@ -86,10 +92,17 @@ function drawActivationFunctions() {
     title: 'Gaussian',
     fn: 'exp(- x ^ 2)',
   };
+
+  const element = document.createElement('div');
+  element.className = 'combined';
+  element.id = 'root';
+  element.style.width = `${widthCombined}px`;
+  element.style.height = `${heightCombined}px`;
+  document.body.appendChild(element);
   functionPlot({
     title: 'Activation Functions',
-    width: 1024,
-    height: 768,
+    width: 640,
+    height: 480,
     data: [
       identity,
       ...binaryStep,
@@ -106,7 +119,7 @@ function drawActivationFunctions() {
       //sinc,
       gaussian,
     ],
-    target
+    target: `#${element.id}`,
   });
 
   function plot(datum) {
