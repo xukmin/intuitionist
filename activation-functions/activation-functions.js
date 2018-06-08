@@ -1,7 +1,7 @@
 'use strict';
 
-const widthCombined = 640;
-const heightCombined = 480;
+const widthCombined = 1024;
+const heightCombined = 768;
 const widthIndividual = 480;
 const heightIndividual = 240;
 
@@ -93,35 +93,7 @@ function drawActivationFunctions() {
     fn: 'exp(- x ^ 2)',
   };
 
-  const element = document.createElement('div');
-  element.className = 'combined';
-  element.id = 'root';
-  element.style.width = `${widthCombined}px`;
-  element.style.height = `${heightCombined}px`;
-  document.body.appendChild(element);
-  functionPlot({
-    title: 'Activation Functions',
-    width: 640,
-    height: 480,
-    data: [
-      identity,
-      ...binaryStep,
-      logSigmoid,
-      tanhSigmoid,
-      arcTan,
-      softSign,
-      softPlus,
-      ...reLU,
-      bentIdentity,
-      // ...iSRUs,
-      // ...softExponentials,
-      sinusoid,
-      //sinc,
-      gaussian,
-    ],
-    target: `#${element.id}`,
-  });
-
+  // Draw the individual diagrams.
   function plot(datum) {
     let data = Array.isArray(datum) ? datum : [datum];
     const element = document.createElement('div');
@@ -163,4 +135,34 @@ function drawActivationFunctions() {
       }
     }
   }
+
+  // Plot the combined diagram.
+  const element = document.createElement('div');
+  element.className = 'combined';
+  element.id = 'root';
+  element.style.width = `${widthCombined}px`;
+  element.style.height = `${heightCombined}px`;
+  document.body.appendChild(element);
+  functionPlot({
+    title: 'Combined Diagram of Activation Functions',
+    width: widthCombined,
+    height: heightCombined,
+    data: [
+      identity,
+      ...binaryStep,
+      logSigmoid,
+      tanhSigmoid,
+      arcTan,
+      softSign,
+      softPlus,
+      ...reLU,
+      bentIdentity,
+      // ...iSRUs,
+      // ...softExponentials,
+      sinusoid,
+      //sinc,
+      gaussian,
+    ],
+    target: `#${element.id}`,
+  });
 }
