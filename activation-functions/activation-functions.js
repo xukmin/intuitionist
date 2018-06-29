@@ -13,6 +13,7 @@ function drawActivationFunctions() {
     ...functionPlot.globals.COLORS,
   ];
 
+  // TODO(xukmin): Set correct range for all functions.
   const identity = {
     title: 'Identity',
     fn: 'x'
